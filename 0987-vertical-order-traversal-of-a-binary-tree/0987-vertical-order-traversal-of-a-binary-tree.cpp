@@ -34,7 +34,7 @@ public:
                     vector<int> output;
 
             for(auto j : i.second){
-                            sort(j.second.begin(), j.second.end()); // extra line added
+                   sort(j.second.begin(), j.second.end());          // extra line added
 
 
                 for(auto k: j.second){
