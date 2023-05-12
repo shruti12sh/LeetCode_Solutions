@@ -6,7 +6,7 @@ public:
         if(root==NULL)
         return ans;
         q.push(root);
-        while(1)
+        while(!q.empty())
         {
             int size=q.size();
             if(size==0)
@@ -24,5 +24,6 @@ public:
             }
             ans.push_back(data.back());
         }
+        return ans;
     }
 };
