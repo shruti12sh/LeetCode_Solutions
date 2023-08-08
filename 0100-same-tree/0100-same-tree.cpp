@@ -8,18 +8,18 @@ public:
             return false;
             
             
-        bool left=true;  // Left subtree is same or not
-        bool right=true; // Right subtree is same or not
+        bool left=true;  
+        bool right=true; 
 
             if(p->val!=q->val)    //if both node have different values
                 return false;
-            else if(p->left==NULL && q->left!=NULL) // p Node don't have left chiled and q node have left chiled Node
+            else if(p->left==NULL && q->left!=NULL)  
                 return false;
             else if(p->left!=NULL && q->left==NULL)   // p Node have left chiled and q node don't have left chiled Node
                 return false;  
             else if(p->right==NULL && q->right!=NULL) // p Node don't have right chiled and q node have right chiled Node
                 return false; 
-            else if(p->right!=NULL && q->right==NULL) // p Node have right chiled and q node don't have right chiled Node
+            else if(p->right!=NULL && q->right==NULL) // p Node have right chiled and q node don't have 
                 return false;           
             
          
