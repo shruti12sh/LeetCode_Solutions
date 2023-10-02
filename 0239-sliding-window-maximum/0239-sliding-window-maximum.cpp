@@ -1,21 +1,28 @@
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        int i=0,j=0;
+      list<int>li;
         vector<int>ans;
-         int n = arr.size();
-        deque<int>dq;
-        while(i<n){
-            // if it exceeds the window remove it from front beacuse max is at front and that is now beyond the window size so remove 
-            if(!dq.empty() and dq.front()<i-k+1)dq.pop_front();
-           // if upcoming elemnt is higher that that present at back we remove that element 
-            while(!dq.empty() and arr[dq.back()]<arr[i]){
-                dq.pop_back();
+        int i=0,j=0;
+        
+        while(j<arr.size()){
+            
+            while(li.size()>0 && li.back()<arr[j]){
+                li.pop_back();
             }
-          // insert the index in deque
-            dq.push_back(i++);
-         //  push the fornt of deque in vector
-            if(i>k-1)ans.push_back(arr[dq.front()]);
+            li.push_back(arr[j]);
+            
+            if(j-i+1 < k)j++;
+            
+            else if(j-i+1 == k){
+                ans.push_back(li.front());
+                
+                if(arr[i] == li.front()){
+                    li.pop_front();
+                }
+                i++;
+                j++;
+            }
         }
         return ans;
           
