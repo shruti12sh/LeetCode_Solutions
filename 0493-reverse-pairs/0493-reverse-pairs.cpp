@@ -69,6 +69,6 @@ int mergeSort(vector<int> &arr, int low, int high) {
 
     int reversePairs(vector<int>& nums) {
         int n = nums.size();
-            return mergeSort(nums, 0, n - 1);
+        return mergeSort(nums, 0, n - 1);
     }
 };
