@@ -9,48 +9,54 @@ using namespace std;
 // User function template for C++
 
 class Solution{
+    void findPathHelper(int i, int j, vector < vector < int >> & a, int n, vector < string > & ans, string move,
+    vector < vector < int >> & vis) {
+    if (i == n - 1 && j == n - 1) {
+      ans.push_back(move);
+      return;
+    }
+
+    // downward
+    if (i + 1 < n && !vis[i + 1][j] && a[i + 1][j] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i + 1, j, a, n, ans, move + 'D', vis);
+      vis[i][j] = 0;
+    }
+
+    // left
+    if (j - 1 >= 0 && !vis[i][j - 1] && a[i][j - 1] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i, j - 1, a, n, ans, move + 'L', vis);
+      vis[i][j] = 0;
+    }
+
+    // right 
+    if (j + 1 < n && !vis[i][j + 1] && a[i][j + 1] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i, j + 1, a, n, ans, move + 'R', vis);
+      vis[i][j] = 0;
+    }
+
+    // upward
+    if (i - 1 >= 0 && !vis[i - 1][j] && a[i - 1][j] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i - 1, j, a, n, ans, move + 'U', vis);
+      vis[i][j] = 0;
+    }
+
+  }
+    
+    
+    
+    
     public:
-    
-    
-    
-    
-    void solve(int i,int j,vector<vector<int>> &m, int n,vector<vector<int>>&vis,vector<string>&ans,string s){
-        if(i==n-1 && j==n-1) {
-            ans.push_back(s);
-            return;
-    }
-    if(i+1<n && m[i+1][j]==1 && vis[i+1][j]!= 1){
-        vis[i][j] = 1;
-        solve(i+1,j,m,n,vis,ans,s + 'D');
-        vis[i][j]= 0;
-        
-    }
-      if(j-1>=0 && m[i][j-1]==1 && vis[i][j-1]!= 1){
-        vis[i][j] = 1;
-        solve(i,j-1,m,n,vis,ans,s + 'L');
-        vis[i][j]= 0;
-        
-    }
-      if(j+1<n && m[i][j+1]==1 && vis[i][j+1]!= 1){
-        vis[i][j] = 1;
-        solve(i,j+1,m,n,vis,ans,s + 'R');
-        vis[i][j]= 0;
-        
-    }
-    if(i-1>=0 && m[i-1][j]==1 && vis[i-1][j]!= 1){
-        vis[i][j] = 1;
-        solve(i-1,j,m,n,vis,ans,s + 'U');
-        vis[i][j]= 0;
-        
-    }
-    }
-    
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
-        vector<string>ans;
-        vector<vector<int>>vis(n,vector<int>(n,0));
-        if(m[0][0]==1)solve(0,0,m,n,vis,ans,"");
-        return ans;
+      vector < string > ans;
+      vector < vector < int >> vis(n, vector < int > (n, 0));
+
+      if (m[0][0] == 1) findPathHelper(0, 0, m, n, ans, "", vis);
+      return ans;
     }
 };
 
