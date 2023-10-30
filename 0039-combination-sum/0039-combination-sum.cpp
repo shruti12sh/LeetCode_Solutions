@@ -1,6 +1,6 @@
 class Solution {
 public:
-void f1(int idx,vector<int>&ds,int sum,int target,vector<int>&candidates,int n,        vector<vector<int>>&ans){
+void f1(int idx,vector<int>&ds,int sum,int target,vector<int>&candidates,int n,vector<vector<int>>&ans){
     if(idx==n) 
     {if(sum==target){ ans.push_back(ds);}return;}
     if(sum+candidates[idx]<=target){
